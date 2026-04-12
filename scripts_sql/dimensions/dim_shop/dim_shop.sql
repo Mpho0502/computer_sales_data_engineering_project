@@ -11,3 +11,12 @@ CREATE TABLE [computer_stg].[dbo].[dim_shop](
 	[Shop_Name] [nvarchar](50) NOT NULL,
 	[Shop_Age] [nvarchar](50) NOT NULL
 )
+
+--Insert values into the table from the raw data
+INSERT INTO [computer_stg].[dbo].[dim_shop] (
+		[Shop_Name], 
+		[Shop_Age]
+)
+SELECT DISTINCT [Shop_Name], 
+				[Shop_Age]
+FROM [computer_stg].[dbo].[raw_pc_data]

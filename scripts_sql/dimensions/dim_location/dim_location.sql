@@ -15,3 +15,11 @@ CREATE TABLE [computer_stg].[dbo].[dim_location](
 )
 
 INSERT INTO [computer_stg].[dbo].[dim_location] (
+	[Continent],
+	[Country_or_State],
+	[Province_or_City] 
+)
+SELECT DISTINCT [Continent],
+				[Country_or_State],
+				[Province_or_City] 
+FROM [computer_stg].[dbo].[raw_pc_data]

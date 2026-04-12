@@ -20,3 +20,7 @@ INSERT INTO [computer_stg].[dbo].[dim_shop] (
 SELECT DISTINCT [Shop_Name], 
 				[Shop_Age]
 FROM [computer_stg].[dbo].[raw_pc_data]
+
+--Show all the shops
+SELECT *
+FROM [computer_stg].[dbo].[dim_shop]

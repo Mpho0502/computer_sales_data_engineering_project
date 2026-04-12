@@ -14,6 +14,7 @@ CREATE TABLE [computer_stg].[dbo].[dim_location](
 	[Province_or_City] [nvarchar](100) NOT NULL
 )
 
+--Insert values into the table from Raw data
 INSERT INTO [computer_stg].[dbo].[dim_location] (
 	[Continent],
 	[Country_or_State],
@@ -23,3 +24,7 @@ SELECT DISTINCT [Continent],
 				[Country_or_State],
 				[Province_or_City] 
 FROM [computer_stg].[dbo].[raw_pc_data]
+
+--Show all the locations
+SELECT *
+FROM [computer_stg].[dbo].[dim_location]

@@ -12,3 +12,12 @@ CREATE TABLE [computer_stg].[dbo].[dim_sales_person](
 	[Sales_Person_Department] [nvarchar](50) NOT NULL
 )
 
+--Insert values into tables from raw data
+INSERT INTO [computer_stg].[dbo].[dim_sales_person](
+	[Sales_Person_Name],
+	[Sales_Person_Department]
+)
+SELECT DISTINCT [Sales_Person_Name],
+				[Sales_Person_Department]
+FROM [computer_stg].[dbo].[raw_pc_data]
+

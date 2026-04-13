@@ -10,3 +10,11 @@ CREATE TABLE [computer_stg].[dbo].[dim_channel](
 	[Channel] [nvarchar](50) NOT NULL
 )
 
+--Insert values into the table from the raw data
+INSERT INTO [computer_stg].[dbo].[dim_channel](
+	[Channel]
+)
+SELECT DISTINCT [Channel]
+FROM [computer_stg].[dbo].[raw_pc_data]
+
+

@@ -23,3 +23,24 @@ SELECT DISTINCT [Cost_Price]
 	[Total_Sales_per_Employee] [int] NOT NULL,
 	[PC_Market_Price] [int] NOT NULL
 )
+
+--Insert values into table from raw data
+INSERT INTO [computer_stg].[dbo].[pc_sales_fact](
+	[Cost_Price],
+	[Sale_Price],
+	[Discount_Amount],
+	[Finance_Amount],
+	[Credit_Score],
+	[Cost_of_Repairs],
+	[Total_Sales_per_Employee],
+	[PC_Market_Price]
+)
+SELECT DISTINCT [Cost_Price],
+				[Sale_Price],
+				[Discount_Amount],
+				[Finance_Amount],
+				[Credit_Score],
+				[Cost_of_Repairs],
+				[Total_Sales_per_Employee],
+				[PC_Market_Price]
+FROM [computer_stg].[dbo].[raw_pc_data]

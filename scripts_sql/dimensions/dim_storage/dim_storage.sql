@@ -24,3 +24,7 @@ SELECT DISTINCT [Storage_Type],
 				[RAM],
 				[Storage_Capacity]
 FROM [computer_stg].[dbo].[raw_pc_data]
+
+--Show all the storage insight
+SELECT *
+FROM [computer_stg].[dbo].[dim_storage]

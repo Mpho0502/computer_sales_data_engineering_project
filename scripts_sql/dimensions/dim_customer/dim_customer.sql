@@ -28,3 +28,7 @@ SELECT DISTINCT [Customer_Name],
 				[Customer_Contact_Number],
 				[Customer_Email_Address]
 FROM [computer_stg].[dbo].[raw_pc_data]
+
+--Show all the customers
+SELECT *
+FROM [computer_stg].[dbo].[dim_customer]

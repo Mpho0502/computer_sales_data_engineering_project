@@ -16,3 +16,7 @@ INSERT INTO [computer_stg].[dbo].[dim_priority](
 )
 SELECT DISTINCT [Priority]
 FROM [computer_stg].[dbo].[raw_pc_data]
+
+--Show all the priorities
+SELECT *
+FROM [computer_stg].[dbo].[dim_priority]

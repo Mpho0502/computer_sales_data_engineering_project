@@ -20,3 +20,7 @@ INSERT INTO [computer_stg].[dbo].[dim_pc](
 SELECT DISTINCT [PC_Make],
 				[PC_Model]
 FROM [computer_stg].[dbo].[raw_pc_data]
+
+--Show all the PCs
+SELECT *
+FROM [computer_stg].[dbo].[dim_pc]

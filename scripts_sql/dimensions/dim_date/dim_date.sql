@@ -19,3 +19,7 @@ INSERT INTO [computer_stg].[dbo].[dim_date](
 SELECT DISTINCT [Purchase_Date],
 				[Ship_Date] 
 FROM [computer_stg].[dbo].[raw_pc_data]
+
+--Show all the dates
+SELECT *
+FROM [computer_stg].[dbo].[dim_date]

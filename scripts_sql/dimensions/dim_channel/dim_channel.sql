@@ -17,4 +17,6 @@ INSERT INTO [computer_stg].[dbo].[dim_channel](
 SELECT DISTINCT [Channel]
 FROM [computer_stg].[dbo].[raw_pc_data]
 
-
+--Show all the channels
+SELECT *
+FROM [computer_stg].[dbo].[dim_channel]

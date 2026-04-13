@@ -16,3 +16,7 @@ INSERT INTO [computer_stg].[dbo].[dim_payment](
 )
 SELECT DISTINCT [Payment_Method]
 FROM [computer_stg].[dbo].[raw_pc_data]
+
+--Show all payment methods
+SELECT *
+FROM [computer_stg].[dbo].[dim_payment]

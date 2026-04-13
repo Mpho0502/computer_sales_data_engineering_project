@@ -16,3 +16,15 @@ CREATE TABLE [computer_stg].[dbo].[dim_customer](
 	[Customer_Email_Address] [nvarchar](50) NOT NULL
 )
 
+--Insert values into the table from raw data
+INSERT INTO [computer_stg].[dbo].[dim_customer](
+	[Customer_Name],
+	[Customer_Surname],
+	[Customer_Contact_Number],
+	[Customer_Email_Address]
+)
+SELECT DISTINCT [Customer_Name],
+				[Customer_Surname],
+				[Customer_Contact_Number],
+				[Customer_Email_Address]
+FROM [computer_stg].[dbo].[raw_pc_data]

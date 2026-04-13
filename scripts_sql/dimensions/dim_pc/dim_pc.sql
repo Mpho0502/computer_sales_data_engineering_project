@@ -11,3 +11,12 @@ CREATE TABLE [computer_stg].[dbo].[dim_pc](
 	[PC_Make] [nvarchar](50) NOT NULL,
 	[PC_Model] [nvarchar](50) NOT NULL
 )
+
+--Insert values into the table from raw data
+INSERT INTO [computer_stg].[dbo].[dim_pc](
+	[PC_Make],
+	[PC_Model]
+)
+SELECT DISTINCT [PC_Make],
+				[PC_Model]
+FROM [computer_stg].[dbo].[raw_pc_data]

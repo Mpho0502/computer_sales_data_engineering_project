@@ -21,3 +21,6 @@ SELECT DISTINCT [Sales_Person_Name],
 				[Sales_Person_Department]
 FROM [computer_stg].[dbo].[raw_pc_data]
 
+--Show all the sales persons
+SELECT *
+FROM [computer_stg].[dbo].[dim_sales_person]

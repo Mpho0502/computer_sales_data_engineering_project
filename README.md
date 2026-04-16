@@ -27,57 +27,24 @@ The goal is to demonstrate **data engineering fundamentals**: cleaning, transfor
 
 ---
 
-## 📂 Workflow
+## 📂 Data Engineering Workflow
+
+1. **Planning & Schema Modeling** → Define business goals, identify entities, and design the star schema.  
+2. **Staging Layer** → Load raw sales data into staging tables while preserving original records.  
+3. **Data Cleaning** → Remove duplicates, handle missing values, and standardize formats.  
+4. **Transformation** → Apply business rules, normalize product categories, and calculate metrics.  
+5. **Warehouse Layer** → Implement the star schema for facts and dimensions (products, customers, dates, etc.).  
+6. **ETL Pipelines** → Automate the flow of data from staging → cleaning → transformation → warehouse, ensuring clean and reliable datasets for reporting.  
 
 ---
 
-### 📐 1. Planning & Schema Modeling
-- Define business goals and reporting needs.
-- Identify entities (customers, products, shops, locations, etc.).
-- Design the **Star Schema** with a central fact table (`PC_Data_Sales_Fact`) and dimension tables.
+## 📐 Planning Before Schema Design
 
----
+Before building the schema, it’s important to plan carefully:
 
-### 📥 2. Staging Layer
-- Load raw sales data into staging tables.
-- Preserve original data for traceability and auditing.
-
----
-
-### 🧹 3. Data Cleaning
-- Remove duplicates.
-- Handle missing values.
-- Standardize formats (dates, emails, phone numbers).
-
----
-
-### 🔧 4. Transformation
-- Apply business rules.
-- Normalize product categories.
-- Calculate metrics (e.g., discounts, revenue, profit margins).
-
----
-
-### 🗄️ 5. Warehouse Layer
-- Implement the **Star Schema** for sales facts and dimensions:
-  - Dimensions: customers, PCs, shops, locations, payments, dates, etc.
-  - Fact table: sales transactions with measurable attributes.
-
----
-
-### ⚙️ 6. ETL Pipelines
-- Automate the flow of data from staging → cleaning → transformation → warehouse.
-- Ensure datasets are clean, reliable, and ready for reporting and analytics.
-        
----
-
-## 🧩 Planning the Data Model
-Before diving into schema design, careful planning is essential:
-
-- **Business Goals** → Define what the warehouse should achieve (e.g., track PC sales performance).
-- **Entities** → Identify core components: customers, PCs, shops, locations, payments, etc.
-- **Relationships** → Map how entities interact (e.g., a customer buys a PC from a shop).
-- **Granularity** → Decide the level of detail (transaction-level vs. aggregated).
+- **Business Goals** → Decide what the warehouse should achieve. For example, tracking computer sales performance.  
+- **Entities** → Identify the main parts of the system, such as customers, PCs, shops, locations, and payments.  
+- **Relationships** → Understand how these parts connect. For example, a customer buys a PC from a shop.   
 
 ---
 
@@ -90,10 +57,9 @@ The chosen schema is a **Star Schema**, which balances simplicity and analytical
 ---
 ### 🔑 Components
 
-**Fact Table**  
-- `PC_Data_Sales_Fact` → Holds measurable data such as cost price, sale price, discount, finance amount, repairs, etc.
+**Fact Table** → Holds measurable data such as cost price, sale price, discount, finance amount, repairs, etc.
 
-**Dimension Tables** → Provide descriptive attributes
+**Dimension Tables** → Provide descriptive attributes.
 This structure allows fast joins and intuitive queries.
 
 ---

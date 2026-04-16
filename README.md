@@ -87,13 +87,7 @@ Building a robust data warehouse requires a clear workflow that begins with **pl
        Warehouse Layer
               |
          ETL Pipelines
-
-# ✨ Data Modeling & Schema Planning
-
-## 📌 Introduction
-Data modeling is the art of transforming raw business requirements into structured, analyzable data.  
-It ensures that information flows seamlessly from **planning → schema design → data cleaning**, ultimately powering reliable insights.
-
+         
 ---
 
 ## 🧩 Planning the Data Model
@@ -145,14 +139,7 @@ Once the schema is in place, **data cleaning** ensures accuracy and reliability:
 
 ---
 
-### ✅ Summary
-
-The **Star Schema** provides the backbone for organizing PC sales data.  
-By combining structured modeling with rigorous cleaning, the warehouse delivers **trustworthy, actionable insights**.
-
----
-
-## 📂 Example Business Questions
+## 📂 Business Questions
 - Which **computer brands** generate the highest revenue?  
 - What is the **average discount rate** applied across product categories?  
 - How do **laptop vs. desktop sales** compare over time?  

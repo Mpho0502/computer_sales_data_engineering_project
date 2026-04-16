@@ -109,7 +109,8 @@ Before diving into schema design, careful planning is essential:
 ## ⭐ Star Schema Design
 The chosen schema is a **Star Schema**, which balances simplicity and analytical power.
 
-             <p align="center"><img src="schema_star/star_schema_computer_sales_.png" alt="Star Schema" width="800"></p>
+       <img src="https://github.com/Mpho0502/computer_sales_data_engineering_project/blob/main/schema_star/star_schema_computer_sales_.png" alt="Star Schema for Computer Sales Data" width="800">
+
                 
                                
 ---

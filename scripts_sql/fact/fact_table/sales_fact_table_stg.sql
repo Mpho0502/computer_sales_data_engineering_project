@@ -32,6 +32,36 @@ SELECT DISTINCT [Cost_Price]
 	[Cost_of_Repairs] [nvarchar](50) NOT NULL,
 	[Total_Sales_per_Employee] [int] NOT NULL,
 	[PC_Market_Price] [int] NOT NULL
+	CONSTRAINT fk_CustomerID
+			   foreign key (CustomerID)
+			   references [computer_stg].[dbo].[dim_customer] (CustomerID),
+	CONSTRAINT fk_Channel_ID
+			   foreign key (Channel_ID) 
+			   references [computer_stg].[dbo].[dim_channel] (Channel_ID),
+	CONSTRAINT fk_DateID
+			   foreign key (DateID)
+			   references [computer_stg].[dbo].[dim_date] (DateID),
+	CONSTRAINT fk_LocationID
+			   foreign key (LocationID) 
+			   references [computer_stg].[dbo].[dim_location] (LocationID),
+	CONSTRAINT fk_PaymentID
+			   foreign key (PaymentID) 
+			   references [computer_stg].[dbo].[dim_payment] (PaymentID),
+	CONSTRAINT fk_PC_ID
+			   foreign key (PC_ID) 
+			   references [computer_stg].[dbo].[dim_pc] (PC_ID),
+	CONSTRAINT fk_PriorityID
+			   foreign key (PriorityID) 
+			   references [computer_stg].[dbo].[dim_priority] (PriorityID),
+	CONSTRAINT fk_SalesPersonID
+			   foreign key (SalesPersonID) 
+			   references [computer_stg].[dbo].[dim_sales_person] (SalesPersonID),
+	CONSTRAINT fk_ShopID
+			   foreign key (ShopID) 
+			   references [computer_stg].[dbo].[dim_shop] (ShopID),
+	CONSTRAINT fk_StorageID
+			   foreign key (StorageID) 
+			   references [computer_stg].[dbo].[dim_storage] (StorageID)
 )
 
 --Insert values into table from raw data

@@ -14,6 +14,16 @@ SELECT DISTINCT [Cost_Price]
   DROP TABLE [computer_stg].[dbo].[pc_sales_fact]
   CREATE TABLE [computer_stg].[dbo].[pc_sales_fact](
 	[SalesID] INT IDENTITY(1,1) PRIMARY KEY,
+	[CustomerID] INT,
+	[Channel_ID] INT,
+	[DateID] INT,
+	[LocationID] INT,
+	[PaymentID] INT,
+	[PC_ID] INT,
+	[PriorityID] INT,
+	[SalesPersonID] INT,
+	[ShopID] INT,
+	[StorageID] INT,
 	[Cost_Price] [int] NOT NULL,
 	[Sale_Price] [int] NOT NULL,
 	[Discount_Amount] [int] NOT NULL,

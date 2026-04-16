@@ -10,7 +10,7 @@ CREATE TABLE [computer_stg].[dbo].[dim_date](
 	[DateID] INT IDENTITY(1,1) PRIMARY KEY,
 	[Purchase_Date] [datetime2](7) NOT NULL,
 	[Ship_Date] [nvarchar](50) NOT NULL
-)
+	)
 
 --Insert values into the table from raw data
 INSERT INTO [computer_stg].[dbo].[dim_date](

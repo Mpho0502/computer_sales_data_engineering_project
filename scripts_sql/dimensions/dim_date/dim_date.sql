@@ -7,6 +7,7 @@ FROM [computer_stg].[dbo].[raw_pc_data]
 --Inserting date ID column
 DROP TABLE [computer_stg].[dbo].[dim_date]
 CREATE TABLE [computer_stg].[dbo].[dim_date](
+	[DateID] INT IDENTITY(1,1) PRIMARY KEY,
 	[Purchase_Date] [datetime2](7) NOT NULL,
 	[Ship_Date] [nvarchar](50) NOT NULL
 )

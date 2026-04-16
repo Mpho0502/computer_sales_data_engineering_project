@@ -28,9 +28,6 @@ The goal is to demonstrate **data engineering fundamentals**: cleaning, transfor
 ---
 
 ## 📂 Workflow
-## 🔄 Data Engineering Workflow
-
-Building a robust data warehouse requires a clear workflow that begins with **planning and schema modeling** and flows through the stages of data preparation, transformation, and automation.
 
 ---
 
@@ -71,23 +68,7 @@ Building a robust data warehouse requires a clear workflow that begins with **pl
 ### ⚙️ 6. ETL Pipelines
 - Automate the flow of data from staging → cleaning → transformation → warehouse.
 - Ensure datasets are clean, reliable, and ready for reporting and analytics.
-
----
-
-## 📊 Workflow Diagram
-
-   Planning & Schema Modeling
-              |
-          Staging Layer
-              |
-         Data Cleaning
-              |
-        Transformation
-              |
-       Warehouse Layer
-              |
-         ETL Pipelines
-         
+        
 ---
 
 ## 🧩 Planning the Data Model
@@ -112,18 +93,7 @@ The chosen schema is a **Star Schema**, which balances simplicity and analytical
 **Fact Table**  
 - `PC_Data_Sales_Fact` → Holds measurable data such as cost price, sale price, discount, finance amount, repairs, etc.
 
-**Dimension Tables** → Provide descriptive attributes:
-- `dim_customer` → Customer details  
-- `dim_pc` → PC make & model  
-- `dim_location` → Geographic info  
-- `dim_shop` → Shop details  
-- `dim_storage` → RAM & storage specs  
-- `dim_sales_person` → Employee info  
-- `dim_date` → Purchase & shipping dates  
-- `dim_payment` → Payment methods  
-- `dim_channel` → Sales channel  
-- `dim_priority` → Order priority  
-
+**Dimension Tables** → Provide descriptive attributes
 This structure allows fast joins and intuitive queries.
 
 ---

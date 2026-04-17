@@ -1,13 +1,9 @@
---Dim Priority
-SELECT DISTINCT [Priority]
-INTO [computer_stg].[dbo].[dim_priority]
-FROM [computer_stg].[dbo].[raw_pc_data]
-
---Inserting priority ID column
+--create table
 DROP TABLE [computer_stg].[dbo].[dim_priority]
 CREATE TABLE [computer_stg].[dbo].[dim_priority](
 	[PriorityID] INT IDENTITY(1,1) PRIMARY KEY,
-	[Priority] [nvarchar](50) NOT NULL
+	[Priority] [nvarchar](50) NOT NULL,
+	[Load_date] DATETIME DEFAULT GETDATE()
 ) 
 
 --Insert values into the table from the raw data

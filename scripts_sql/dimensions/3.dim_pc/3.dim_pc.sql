@@ -1,15 +1,10 @@
---Dim PC
-SELECT DISTINCT [PC_Make]
-                ,[PC_Model]
-INTO [computer_stg].[dbo].[dim_pc]
-FROM [computer_stg].[dbo].[raw_pc_data]
-
---Insert pc ID column
+--Create table
 DROP TABLE [computer_stg].[dbo].[dim_pc]
 CREATE TABLE [computer_stg].[dbo].[dim_pc](
 	[PC_ID] INT IDENTITY(1,1) PRIMARY KEY,
 	[PC_Make] [nvarchar](50) NOT NULL,
-	[PC_Model] [nvarchar](50) NOT NULL
+	[PC_Model] [nvarchar](50) NOT NULL,
+	[Load_date] DATETIME DEFAULT GETDATE()
 )
 
 --Insert values into the table from raw data

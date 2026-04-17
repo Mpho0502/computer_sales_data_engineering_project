@@ -52,7 +52,8 @@ SELECT
 	[Total_Sales_per_Employee],
 	[PC_Market_Price]
 FROM
-	[computer_stg].[dbo].[raw_pc_data] --Show all the sales
+	[computer_stg].[dbo].[raw_pc_data] 
+--Show all the sales
 SELECT
 	*
 FROM

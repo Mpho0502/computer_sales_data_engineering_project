@@ -27,82 +27,24 @@ The goal is to demonstrate **data engineering fundamentals**: cleaning, transfor
 
 ---
 
-## 📂 Workflow
-## 🔄 Data Engineering Workflow
+## 📂 Data Engineering Workflow
 
-Building a robust data warehouse requires a clear workflow that begins with **planning and schema modeling** and flows through the stages of data preparation, transformation, and automation.
-
----
-
-### 📐 1. Planning & Schema Modeling
-- Define business goals and reporting needs.
-- Identify entities (customers, products, shops, locations, etc.).
-- Design the **Star Schema** with a central fact table (`PC_Data_Sales_Fact`) and dimension tables.
+1. **Planning & Schema Modeling** → Define business goals, identify entities, and design the star schema.  
+2. **Staging Layer** → Load raw sales data into staging tables while preserving original records.  
+3. **Data Cleaning** → Remove duplicates, handle missing values, and standardize formats.  
+4. **Transformation** → Apply business rules, normalize product categories, and calculate metrics.  
+5. **Warehouse Layer** → Implement the star schema for facts and dimensions (products, customers, dates, etc.).  
+6. **ETL Pipelines** → Automate the flow of data from staging → cleaning → transformation → warehouse, ensuring clean and reliable datasets for reporting.  
 
 ---
 
-### 📥 2. Staging Layer
-- Load raw sales data into staging tables.
-- Preserve original data for traceability and auditing.
+## 📐 Planning Before Schema Design
 
----
+Before building the schema, it’s important to plan carefully:
 
-### 🧹 3. Data Cleaning
-- Remove duplicates.
-- Handle missing values.
-- Standardize formats (dates, emails, phone numbers).
-
----
-
-### 🔧 4. Transformation
-- Apply business rules.
-- Normalize product categories.
-- Calculate metrics (e.g., discounts, revenue, profit margins).
-
----
-
-### 🗄️ 5. Warehouse Layer
-- Implement the **Star Schema** for sales facts and dimensions:
-  - Dimensions: customers, PCs, shops, locations, payments, dates, etc.
-  - Fact table: sales transactions with measurable attributes.
-
----
-
-### ⚙️ 6. ETL Pipelines
-- Automate the flow of data from staging → cleaning → transformation → warehouse.
-- Ensure datasets are clean, reliable, and ready for reporting and analytics.
-
----
-
-## 📊 Workflow Diagram
-
-   Planning & Schema Modeling
-              |
-          Staging Layer
-              |
-         Data Cleaning
-              |
-        Transformation
-              |
-       Warehouse Layer
-              |
-         ETL Pipelines
-
-# ✨ Data Modeling & Schema Planning
-
-## 📌 Introduction
-Data modeling is the art of transforming raw business requirements into structured, analyzable data.  
-It ensures that information flows seamlessly from **planning → schema design → data cleaning**, ultimately powering reliable insights.
-
----
-
-## 🧩 Planning the Data Model
-Before diving into schema design, careful planning is essential:
-
-- **Business Goals** → Define what the warehouse should achieve (e.g., track PC sales performance).
-- **Entities** → Identify core components: customers, PCs, shops, locations, payments, etc.
-- **Relationships** → Map how entities interact (e.g., a customer buys a PC from a shop).
-- **Granularity** → Decide the level of detail (transaction-level vs. aggregated).
+- **Business Goals** → Decide what the warehouse should achieve. For example, tracking computer sales performance.  
+- **Entities** → Identify the main parts of the system, such as customers, PCs, shops, locations, and payments.  
+- **Relationships** → Understand how these parts connect. For example, a customer buys a PC from a shop.   
 
 ---
 
@@ -115,21 +57,9 @@ The chosen schema is a **Star Schema**, which balances simplicity and analytical
 ---
 ### 🔑 Components
 
-**Fact Table**  
-- `PC_Data_Sales_Fact` → Holds measurable data such as cost price, sale price, discount, finance amount, repairs, etc.
+**Fact Table** → Holds measurable data such as cost price, sale price, discount, finance amount, repairs, etc.
 
-**Dimension Tables** → Provide descriptive attributes:
-- `dim_customer` → Customer details  
-- `dim_pc` → PC make & model  
-- `dim_location` → Geographic info  
-- `dim_shop` → Shop details  
-- `dim_storage` → RAM & storage specs  
-- `dim_sales_person` → Employee info  
-- `dim_date` → Purchase & shipping dates  
-- `dim_payment` → Payment methods  
-- `dim_channel` → Sales channel  
-- `dim_priority` → Order priority  
-
+**Dimension Tables** → Provide descriptive attributes.
 This structure allows fast joins and intuitive queries.
 
 ---
@@ -145,14 +75,7 @@ Once the schema is in place, **data cleaning** ensures accuracy and reliability:
 
 ---
 
-### ✅ Summary
-
-The **Star Schema** provides the backbone for organizing PC sales data.  
-By combining structured modeling with rigorous cleaning, the warehouse delivers **trustworthy, actionable insights**.
-
----
-
-## 📂 Example Business Questions
+## 📂 Business Questions
 - Which **computer brands** generate the highest revenue?  
 - What is the **average discount rate** applied across product categories?  
 - How do **laptop vs. desktop sales** compare over time?  

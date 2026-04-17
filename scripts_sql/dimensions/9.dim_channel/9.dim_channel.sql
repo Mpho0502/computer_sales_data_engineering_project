@@ -1,18 +1,18 @@
 --create table
-DROP TABLE [computer_stg].[dbo].[dim_channel]
-CREATE TABLE [computer_stg].[dbo].[dim_channel](
-	[Channel_ID] INT IDENTITY(1,1) PRIMARY KEY,
+DROP TABLE [computer_stg].[dbo].[dim_channel] CREATE TABLE [computer_stg].[dbo].[dim_channel](
+	[Channel_ID] INT IDENTITY(1, 1) PRIMARY KEY,
 	[Channel] [nvarchar](50) NOT NULL,
 	[Load_date] DATETIME DEFAULT GETDATE()
-)
-
+) 
 --Insert values into the table from the raw data
-INSERT INTO [computer_stg].[dbo].[dim_channel](
-	[Channel]
-)
-SELECT DISTINCT [Channel]
-FROM [computer_stg].[dbo].[raw_pc_data]
-
+INSERT INTO
+	[computer_stg].[dbo].[dim_channel]([Channel])
+SELECT
+	DISTINCT [Channel]
+FROM
+	[computer_stg].[dbo].[raw_pc_data] 
 --Show all the channels
-SELECT *
-FROM [computer_stg].[dbo].[dim_channel]
+SELECT
+	*
+FROM
+	[computer_stg].[dbo].[dim_channel]

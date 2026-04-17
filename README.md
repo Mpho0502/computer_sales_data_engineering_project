@@ -23,7 +23,6 @@ The goal is to demonstrate **data engineering fundamentals**: cleaning, transfor
   - [Visual Studio Code](https://code.visualstudio.com/)  
   - [Snowflake](https://www.snowflake.com/)  
   - [Databricks](https://www.databricks.com/)  
-  - [Microsoft Excel](https://www.microsoft.com/en/microsoft-365/excel)  
 
 ---
 

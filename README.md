@@ -51,8 +51,7 @@ Before building the schema, it’s important to plan carefully:
 ## ⭐ Star Schema Design
 The chosen schema is a **Star Schema**, which balances simplicity and analytical power.
 
-<img width="1172" height="860" alt="star_schema_computer_sales_" src="https://github.com/user-attachments/assets/c4e9c204-b96b-445e-8ab7-4cce7296d7f7" />
-
+<img width="854" height="822" alt="star_schema_computer_sales" src="https://github.com/user-attachments/assets/abdd9a5f-5187-4c60-9a30-cd26b788443b" />
                                
 ---
 ### 🔑 Components

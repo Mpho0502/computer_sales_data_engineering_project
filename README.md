@@ -23,7 +23,6 @@ The goal is to demonstrate **data engineering fundamentals**: cleaning, transfor
   - [Visual Studio Code](https://code.visualstudio.com/)  
   - [Snowflake](https://www.snowflake.com/)  
   - [Databricks](https://www.databricks.com/)  
-  - [Microsoft Excel](https://www.microsoft.com/en/microsoft-365/excel)  
 
 ---
 
@@ -87,7 +86,7 @@ Once the schema is in place, **data cleaning** ensures accuracy and reliability:
 - **SQL Querying & Optimization**  
 - **ETL Pipeline Development**  
 - **Data Cleaning & Transformation**  
-- **Cloud Data Warehousing** (Snowflake, Databricks, Azure)  
+- **Cloud Data Warehousing** (Snowflake, Databricks)  
 - **Dimensional Modeling** for analytics  
 
 ---
@@ -101,6 +100,6 @@ Once the schema is in place, **data cleaning** ensures accuracy and reliability:
 ---
 
 ## 🔗 Project Status
-Part of my **data engineering portfolio**, showcasing how **SQL, ETL, and cloud platforms** can be applied to real‑world sales datasets.  
+- Currently in the architecture and staging phase. I am preparing to process the initial transaction, focusing on engineering a robust pipeline using Python to ensure data is perfectly **modeled, validated,** and **optimized for high-level analytical dashboards.**
 
 ---

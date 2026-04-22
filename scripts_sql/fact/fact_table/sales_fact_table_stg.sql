@@ -1,5 +1,6 @@
 --create table
-DROP TABLE [computer_stg].[dbo].[pc_sales_fact] CREATE TABLE [computer_stg].[dbo].[pc_sales_fact](
+DROP TABLE [computer_stg].[dbo].[pc_sales_fact] 
+CREATE TABLE [computer_stg].[dbo].[pc_sales_fact](
 	[SalesID] INT IDENTITY(1, 1) PRIMARY KEY,
 	[LocationID] INT,
 	[ShopID] INT,
@@ -20,6 +21,7 @@ DROP TABLE [computer_stg].[dbo].[pc_sales_fact] CREATE TABLE [computer_stg].[dbo
 	[Total_Sales_per_Employee] [int] NOT NULL,
 	[PC_Market_Price] [int] NOT NULL,
 	[Load_date] DATETIME DEFAULT GETDATE(),
+--Foreign Key Constraints
 	CONSTRAINT fk_LocationID foreign key (LocationID) references [computer_stg].[dbo].[dim_location] (LocationID),
 	CONSTRAINT fk_ShopID foreign key (ShopID) references [computer_stg].[dbo].[dim_shop] (ShopID),
 	CONSTRAINT fk_PC_ID foreign key (PC_ID) references [computer_stg].[dbo].[dim_pc] (PC_ID),
@@ -30,7 +32,8 @@ DROP TABLE [computer_stg].[dbo].[pc_sales_fact] CREATE TABLE [computer_stg].[dbo
 	CONSTRAINT fk_PaymentID foreign key (PaymentID) references [computer_stg].[dbo].[dim_payment] (PaymentID),
 	CONSTRAINT fk_Channel_ID foreign key (Channel_ID) references [computer_stg].[dbo].[dim_channel] (Channel_ID),
 	CONSTRAINT fk_PriorityID foreign key (PriorityID) references [computer_stg].[dbo].[dim_priority] (PriorityID),
-) --Insert values into table from raw data
+)
+ --Insert values into table from raw data
 INSERT INTO
 	[computer_stg].[dbo].[pc_sales_fact](
 		[Cost_Price],

@@ -1,7 +1,9 @@
---create table
-DROP TABLE [computer_stg].[dbo].[pc_sales_fact] 
-CREATE TABLE [computer_stg].[dbo].[pc_sales_fact](
-	[SalesID] INT IDENTITY(1, 1) PRIMARY KEY,
+-- CREATING A TABLE
+IF OBJECT_ID('computer_stg.dbo.pc_sales_fact', 'U') IS NOT NULL
+    DROP TABLE computer_stg.dbo.pc_sales_fact;
+
+CREATE TABLE computer_stg.dbo.pc_sales_fact (
+    [SalesID] INT IDENTITY(1, 1) PRIMARY KEY,
 	[LocationID] INT,
 	[ShopID] INT,
 	[PC_ID] INT,
@@ -12,52 +14,90 @@ CREATE TABLE [computer_stg].[dbo].[pc_sales_fact](
 	[PaymentID] INT,
 	[Channel_ID] INT,
 	[PriorityID] INT,
-	[Cost_Price] [int] NOT NULL,
-	[Sale_Price] [int] NOT NULL,
-	[Discount_Amount] [int] NOT NULL,
-	[Finance_Amount] [nvarchar](50) NOT NULL,
-	[Credit_Score] [int] NOT NULL,
-	[Cost_of_Repairs] [nvarchar](50) NOT NULL,
-	[Total_Sales_per_Employee] [int] NOT NULL,
-	[PC_Market_Price] [int] NOT NULL,
-	[Load_date] DATETIME DEFAULT GETDATE(),
---Foreign Key Constraints
-	CONSTRAINT fk_LocationID foreign key (LocationID) references [computer_stg].[dbo].[dim_location] (LocationID),
-	CONSTRAINT fk_ShopID foreign key (ShopID) references [computer_stg].[dbo].[dim_shop] (ShopID),
-	CONSTRAINT fk_PC_ID foreign key (PC_ID) references [computer_stg].[dbo].[dim_pc] (PC_ID),
-	CONSTRAINT fk_StorageID foreign key (StorageID) references [computer_stg].[dbo].[dim_storage] (StorageID),
-	CONSTRAINT fk_CustomerID foreign key (CustomerID) references [computer_stg].[dbo].[dim_customer] (CustomerID),
-	CONSTRAINT fk_SalesPersonID foreign key (SalesPersonID) references [computer_stg].[dbo].[dim_sales_person] (SalesPersonID),
-	CONSTRAINT fk_DateID foreign key (DateID) references [computer_stg].[dbo].[dim_date] (DateID),
-	CONSTRAINT fk_PaymentID foreign key (PaymentID) references [computer_stg].[dbo].[dim_payment] (PaymentID),
-	CONSTRAINT fk_Channel_ID foreign key (Channel_ID) references [computer_stg].[dbo].[dim_channel] (Channel_ID),
-	CONSTRAINT fk_PriorityID foreign key (PriorityID) references [computer_stg].[dbo].[dim_priority] (PriorityID),
+    Cost_Price DECIMAL(10,2) NOT NULL,
+    Sale_Price DECIMAL(10,2) NOT NULL,
+    Discount_Amount DECIMAL(10,2) NOT NULL,
+    Finance_Amount DECIMAL(10,2) NOT NULL,
+    Cost_of_Repairs DECIMAL(10,2) NOT NULL,
+    Total_Sales_per_Employee DECIMAL(10,2) NOT NULL,
+    PC_Market_Price DECIMAL(10,2) NOT NULL,
+    Credit_Score INT NOT NULL,
+    LoadDate DATETIME DEFAULT GETDATE()
+);
+
+-- INSERTING VALUES INTO THE TABLE
+INSERT INTO computer_stg.dbo.pc_sales_fact (
+	[LocationID],
+	[ShopID],
+	[PC_ID],
+	[StorageID],
+	[CustomerID],
+	[SalesPersonID],
+	[DateID],
+	[PaymentID],
+	[Channel_ID],
+	[PriorityID],
+    Cost_Price,
+    Sale_Price,
+    Discount_Amount,
+    Finance_Amount,
+    Cost_of_Repairs,
+    Total_Sales_per_Employee,
+    PC_Market_Price,
+    Credit_Score
 )
- --Insert values into table from raw data
-INSERT INTO
-	[computer_stg].[dbo].[pc_sales_fact](
-		[Cost_Price],
-		[Sale_Price],
-		[Discount_Amount],
-		[Finance_Amount],
-		[Credit_Score],
-		[Cost_of_Repairs],
-		[Total_Sales_per_Employee],
-		[PC_Market_Price]
-	)
 SELECT
-	DISTINCT [Cost_Price],
-	[Sale_Price],
-	[Discount_Amount],
-	[Finance_Amount],
-	[Credit_Score],
-	[Cost_of_Repairs],
-	[Total_Sales_per_Employee],
-	[PC_Market_Price]
-FROM
-	[computer_stg].[dbo].[raw_pc_data] 
---Show all the sales
-SELECT
-	*
-FROM
-	[computer_stg].[dbo].[pc_sales_fact]
+    l.LocationID,
+	sh.ShopID,
+	p.PC_ID,
+	st.StorageID,
+	c.CustomerID,
+	sp.SalesPersonID,
+	d.DateID,
+	pm.PaymentID,
+	ch.Channel_ID,
+	pr.PriorityID,
+    stg.Cost_Price,
+    stg.Sale_Price,
+    stg.Discount_Amount,
+    stg.Finance_Amount,
+    stg.Cost_of_Repairs,
+    stg.Total_Sales_per_Employee,
+    stg.PC_Market_Price,
+    stg.Credit_Score
+FROM computer_stg.dbo.raw_pc_data AS stg
+INNER JOIN computer_stg.dbo.dim_location l
+    ON stg.Continent = l.Continent
+    AND stg.Country_Or_State = l.Country_Or_State
+    AND stg.Province_Or_City = l.Province_Or_City
+INNER JOIN computer_stg.dbo.dim_shop sh
+    ON stg.Shop_Name = sh.Shop_Name
+    AND stg.Shop_Age = sh.Shop_Age
+INNER JOIN computer_stg.dbo.dim_pc p
+    ON stg.PC_Model = p.PC_Model
+    AND stg.PC_Make = p.PC_Make
+INNER JOIN computer_stg.dbo.dim_storage st
+    ON stg.Storage_Type = st.Storage_Type
+    AND stg.RAM = st.RAM
+    AND stg.Storage_Capacity = st.Storage_Capacity
+INNER JOIN computer_stg.dbo.dim_customer c
+    ON stg.Customer_Name = c.Customer_Name
+    AND stg.Customer_Surname = c.Customer_Surname
+    AND stg.Customer_Contact_Number = c.Customer_Contact_Number
+    AND stg.Customer_Email_Address = c.Customer_Email_Address
+INNER JOIN computer_stg.dbo.dim_sales_person sp
+    ON stg.Sales_Person_Name = sp.Sales_Person_Name
+    AND stg.Sales_Person_Department = sp.Sales_Person_Department
+INNER JOIN computer_stg.dbo.dim_date d
+    ON stg.Purchase_Date = d.Purchase_Date
+    AND stg.Ship_Date = d.Ship_Date
+INNER JOIN computer_stg.dbo.dim_payment pm
+    ON stg.Payment_Method = pm.Payment_Method
+INNER JOIN computer_stg.dbo.dim_channel ch
+    ON stg.Channel = ch.Channel
+INNER JOIN computer_stg.dbo.dim_priority pr
+    ON stg.Priority = pr.Priority
+ 
+-- CHECK DATA
+SELECT * 
+FROM computer_stg.dbo.pc_sales_fact;

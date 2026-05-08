@@ -4,6 +4,9 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
+    -- Refresh database tables
+    EXEC sp_create_databases_stg_and_dwh;
+
     -- Refresh dimension tables
     EXEC sp_create_dim_location;
     EXEC sp_create_dim_shop;
